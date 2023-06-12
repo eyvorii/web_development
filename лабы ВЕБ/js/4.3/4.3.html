@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Example</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.14.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.14.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+      const name = "My name!";
+      const age = 21;
+
+      const styles = {
+        color: "blue",
+        backgroundColor: "lightgray",
+        padding: "10px",
+      };
+
+      const element = (
+        <div style={styles}>
+          <h1>{name}</h1>
+          <p>Age: {age}</p>
+        </div>
+      );
+
+      ReactDOM.render(element, document.getElementById("root"));
+    </script>
+  </body>
+</html>
