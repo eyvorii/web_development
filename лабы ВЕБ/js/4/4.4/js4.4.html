@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Timer</title>
+    <!-- include Babel and React scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  </head>
+  <body>
+    <!-- create a container for the timer -->
+    <div id="timer"></div>
+
+    <script type="text/babel">
+      // define the timer component using a functional component
+      function TimerFunc() {
+        const [time, setTime] = React.useState(0);
+
+        React.useEffect(() => {
+          const interval = setInterval(() => {
+            setTime((prevTime) => prevTime + 1);
+          }, 1000);
+
+          return () => clearInterval(interval);
+        }, []);
+
+        return <div>{time} seconds</div>;
+      }
+
+      // define the same timer component using ES6 classes
+      class TimerClass extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { time: 0 };
+        }
+
+        componentDidMount() {
+          this.interval = setInterval(() => {
+            this.setState((prevState) => ({ time: prevState.time + 1 }));
+          }, 1000);
+        }
+
+        componentWillUnmount() {
+          clearInterval(this.interval);
+        }
+
+        render() {
+          return <div>{this.state.time} seconds</div>;
+        }
+      }
+
+      // define the same timer component using an arrow function
+      const TimerArrow = () => {
+        const [time, setTime] = React.useState(0);
+
+        React.useEffect(() => {
+          const interval = setInterval(() => {
+            setTime((prevTime) => prevTime + 1);
+          }, 1000);
+
+          return () => clearInterval(interval);
+        }, []);
+
+        return <div>{time} seconds</div>;
+      };
+
+      // render the timer components
+      ReactDOM.render(
+          <TimerFunc />,
+        document.getElementById("timer")
+      );
+    </script>
+  </body>
+</html>
