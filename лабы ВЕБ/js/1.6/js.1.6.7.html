@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Sequence Simulator</title>
+</head>
+<body>
+    <h1>Color Sequence Simulator</h1>
+
+    <button onclick="runSimulation()">Run Simulation</button>
+
+    <div id="longest-sequence-display"></div>
+
+    <script>
+        class ColorSimulator {
+            constructor() {
+                this.colors = ['red', 'black', 'white'];
+            }
+
+            generateRandomColor() {
+                const randomIndex = Math.floor(Math.random() * 3);
+                return this.colors[randomIndex];
+            }
+        }
+
+        function runSimulation() {
+            const colorSimulator = new ColorSimulator();
+            const sequenceLengths = { red: 0, black: 0, white: 0 };
+            let currentColor = '';
+            let currentSequenceLength = 0;
+            let longestSequence = '';
+
+            for (let i = 0; i < 1000000; i++) {
+                const color = colorSimulator.generateRandomColor();
+
+                if (color === currentColor) {
+                    currentSequenceLength++;
+                } else {
+                    if (currentSequenceLength > sequenceLengths[currentColor]) {
+                        sequenceLengths[currentColor] = currentSequenceLength;
+                        longestSequence = currentColor;
+                    }
+                    currentColor = color;
+                    currentSequenceLength = 1;
+                }
+            }
+
+            if (currentSequenceLength > sequenceLengths[currentColor]) {
+                sequenceLengths[currentColor] = currentSequenceLength;
+                longestSequence = currentColor;
+            }
+
+            const longestSequenceDisplay = document.getElementById('longest-sequence-display');
+            longestSequenceDisplay.innerText = `The longest sequence of colors was ${sequenceLengths[longestSequence]} consecutive ${longestSequence} values.`;
+        }
+    </script>
+</body>
+</html>
