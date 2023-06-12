@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Array Statistics</title>
+</head>
+<body>
+  <h1>Array Statistics</h1>
+
+  <p>Enter the array of numbers (comma separated):</p>
+  <input type="text" id="inputArray">
+  <button onclick="calculate()">Calculate</button>
+
+  <h2>Results:</h2>
+  <p>Arithmetic mean of positive numbers: <span id="posMean"></span></p>
+  <p>Arithmetic mean of negative numbers: <span id="negMean"></span></p>
+  <p>Number of zeros: <span id="numZeros"></span></p>
+
+  <script>
+    function calculate() {
+      let input = document.getElementById("inputArray").value;
+      let nums = input.split(",").map(Number);
+      let numZeros = 0;
+      let sumPos = 0;
+      let countPos = 0;
+      let sumNeg = 0;
+      let countNeg = 0;
+
+      for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === 0) {
+          numZeros++;
+        } else if (nums[i] > 0) {
+          sumPos += nums[i];
+          countPos++;
+        } else {
+          sumNeg += nums[i];
+          countNeg++;
+        }
+      }
+
+      let posMean = countPos ? sumPos / countPos : "undefined";
+      let negMean = countNeg ? sumNeg / countNeg : "undefined";
+
+      document.getElementById("posMean").innerHTML = posMean;
+      document.getElementById("negMean").innerHTML = negMean;
+      document.getElementById("numZeros").innerHTML = numZeros;
+    }
+  </script>
+</body>
+</html>

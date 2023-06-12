@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Replace Negative Elements with Squares</title>
+</head>
+<body>
+	<h1>Replace Negative Elements with Squares</h1>
+
+	<script>
+		let n = 15; // Change this to any desired value
+		let arr = [];
+		for (let i = 0; i < n; i++) {
+            // Math.random() generates a random decimal number between 0 (inclusive) and 1 (exclusive).
+            // We multiply this decimal by the difference between the max and min values plus one, which gives us a random decimal number between 0 (inclusive) and max-min (inclusive).
+            // We then apply the Math.floor() function to round down to the nearest integer.
+            // Finally, we add the min value to shift the range up to the desired interval.
+			arr.push(Math.floor(Math.random() * 41) - 10);
+		}
+
+		// Output the initial array
+		let initialArrayDiv = document.createElement('div');
+		initialArrayDiv.innerHTML = `The initial array is: [${arr.join(', ')}]`;
+		document.body.appendChild(initialArrayDiv);
+
+		// Replace negative elements with their squares
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i] < 0) {
+				arr[i] = Math.pow(arr[i], 2);
+			}
+		}
+
+		// Output the changed array
+		let changedArrayDiv = document.createElement('div');
+		changedArrayDiv.innerHTML = `The changed array is: [${arr.join(', ')}]`;
+		document.body.appendChild(changedArrayDiv);
+	</script>
+</body>
+</html>

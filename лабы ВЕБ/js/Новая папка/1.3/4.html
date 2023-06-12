@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Simulation</title>
+  </head>
+  <body>
+    <h1>Simulation Results</h1>
+    <p id="output"></p>
+    
+    <script>
+      // Define an array to store the results of each simulation
+      const results = [];
+      
+      // Run the simulation 1,000,000 times
+      for (let i = 0; i < 1000000; i++) {
+        // Generate a random number from 0 to 2 (inclusive)
+        const randomNum = Math.floor(Math.random() * 3);
+        
+        // Add the random number to the results array
+        results.push(randomNum);
+      }
+      
+      // Find the maximum number of times the red value fell out in a row
+      let maxRedInARow = 0;
+      let currentRedInARow = 0;
+      
+      for (let j = 0; j < results.length; j++) {
+        if (results[j] === 0) {
+          currentRedInARow++;
+          if (currentRedInARow > maxRedInARow) {
+            maxRedInARow = currentRedInARow;
+          }
+        } else {
+          currentRedInARow = 0;
+        }
+      }
+      
+      // Output the maximum number of times the red value fell out in a row
+      const output = document.getElementById("output");
+      output.innerHTML = `The maximum number of times the red value fell out in a row was: ${maxRedInARow}`;
+    </script>
+  </body>
+</html>

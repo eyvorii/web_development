@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Simulation</title>
+  </head>
+  <body>
+    <h1>Simulation Results</h1>
+    <p id="output"></p>
+    
+    <script>
+      // Define an object to map the random numbers to colors
+      const colors = {
+        0: "red",
+        1: "black",
+        2: "white"
+      };
+      
+      // Define an object to keep track of the length of the current sequence for each color
+      const sequenceLengths = {
+        red: 0,
+        black: 0,
+        white: 0
+      };
+      
+      // Define an object to keep track of the longest sequence for each color
+      const longestSequences = {
+        red: 0,
+        black: 0,
+        white: 0
+      };
+      
+      // Run the simulation 1,000,000 times
+      for (let i = 0; i < 1000000; i++) {
+        // Generate a random number from 0 to 2 (inclusive)
+        const randomNum = Math.floor(Math.random() * 3);
+        
+        // Determine the color corresponding to the random number
+        const color = colors[randomNum];
+        
+        // Update the length of the current sequence for the corresponding color
+        if (color === "red") {
+          sequenceLengths.red++;
+          sequenceLengths.black = 0;
+          sequenceLengths.white = 0;
+        } else if (color === "black") {
+          sequenceLengths.red = 0;
+          sequenceLengths.black++;
+          sequenceLengths.white = 0;
+        } else {
+          sequenceLengths.red = 0;
+          sequenceLengths.black = 0;
+          sequenceLengths.white++;
+        }
+        
+        // Update the longest sequence for the corresponding color if necessary
+        if (sequenceLengths.red > longestSequences.red) {
+          longestSequences.red = sequenceLengths.red;
+        }
+        if (sequenceLengths.black > longestSequences.black) {
+          longestSequences.black = sequenceLengths.black;
+        }
+        if (sequenceLengths.white > longestSequences.white) {
+          longestSequences.white = sequenceLengths.white;
+        }
+      }
+      
+      // Determine which sequence of red, black, or white values was the longest
+      let longestSequenceColor;
+      let longestSequenceLength = 0;
+      
+      for (const color in longestSequences) {
+        if (longestSequences[color] > longestSequenceLength) {
+          longestSequenceColor = color;
+          longestSequenceLength = longestSequences[color];
+        }
+      }
+      
+      // Output which sequence of red, black, or white values was the longest
+      const output = document.getElementById("output");
+      output.innerHTML = `The longest sequence of ${longestSequenceColor} values was ${longestSequenceLength}`;
+    </script>
+  </body>
+</html>

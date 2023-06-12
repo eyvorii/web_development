@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Negative Number Squares Replacer</title>
+</head>
+<body>
+	<h1>Negative Number Squares Replacer</h1>
+	<p>Original Array: <span id="originalArray"></span></p>
+	<button onclick="replaceNegatives()">Replace Negatives</button>
+	<p>New Array: <span id="newArray"></span></p>
+
+	<script>
+		class NegativeNumberSquaresReplacer {
+			constructor (array) {
+				this.array = array;
+			}
+
+			replaceNegatives () {
+				return this.array.map((num) => {
+					if (num < 0) {
+						return num * num;
+					}
+					return num;
+				});
+			}
+		}
+
+		function replaceNegatives () {
+			const originalArray = [2, -5, 10, -12, 3, -7, 8, -9, 14, 6];
+			const replacer = new NegativeNumberSquaresReplacer(originalArray);
+			const newArray = replacer.replaceNegatives();
+			document.getElementById('originalArray').innerHTML = originalArray.join(', ');
+			document.getElementById('newArray').innerHTML = newArray.join(', ');
+		}
+	</script>
+</body>
+</html>

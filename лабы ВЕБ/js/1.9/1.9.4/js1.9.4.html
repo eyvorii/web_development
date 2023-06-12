@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>String Check</title>
+</head>
+<body>
+	<h1>String Check</h1>
+
+	<label for="string-input">Enter a string of numbers:</label>
+	<input type="text" id="string-input">
+
+	<button onclick="checkString()">Check String</button>
+
+	<p id="output"></p>
+
+	<script>
+		function checkString() {
+			const str = document.getElementById('string-input').value;
+
+			let message = '';
+
+			switch (str.charAt(0)) {
+				case '1':
+				case '2':
+				case '3':
+					message += 'The first digit is 1, 2 or 3. ';
+					break;
+
+				default:
+					message += 'No. ';
+					break;
+			}
+
+			if (str.includes('555-555-5555')) {
+				message += 'Your phone number is included in the string.';
+			} else {
+				message += 'Your phone number is not included in the string.';
+			}
+
+			document.getElementById('output').textContent = message;
+		}
+	</script>
+</body>
+</html>

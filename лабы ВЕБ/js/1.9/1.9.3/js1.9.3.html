@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quarter of an Hour</title>
+</head>
+<body>
+	<h1>Quarter of an Hour</h1>
+
+	<label for="minute-input">Enter a number between 0 and 59:</label>
+	<input type="number" id="minute-input">
+
+	<button onclick="getQuarter()">Get Quarter</button>
+
+	<p id="output"></p>
+
+	<script>
+		function getQuarter() {
+			const minute = +document.getElementById('minute-input').value;
+
+			let quarter;
+
+			switch (true) {
+				case (minute >= 0 && minute < 15):
+					quarter = 'first';
+					break;
+
+				case (minute >= 15 && minute < 30):
+					quarter = 'second';
+					break;
+
+				case (minute >= 30 && minute < 45):
+					quarter = 'third';
+					break;
+
+				case (minute >= 45 && minute < 60):
+					quarter = 'fourth';
+					break;
+
+				default:
+					quarter = 'invalid input';
+					break;
+			}
+
+			document.getElementById('output').textContent = `The number ${minute} falls in the ${quarter} quarter of an hour.`;
+		}
+	</script>
+</body>
+</html>

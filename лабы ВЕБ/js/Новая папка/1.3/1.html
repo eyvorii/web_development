@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Find Arithmetic Mean of Positive Elements</title>
+</head>
+<body>
+	<h1>Arithmetic Mean of Positive Elements</h1>
+
+	<script>
+		// Generate an array of 15 integers chosen at random from the interval [-10, 30]
+		let arr = [];
+		for (let i = 0; i < 15; i++) {
+            // Math.random() generates a random decimal number between 0 (inclusive) and 1 (exclusive).
+            // We multiply this decimal by the difference between the max and min values plus one, which gives us a random decimal number between 0 (inclusive) and max-min (inclusive).
+            // We then apply the Math.floor() function to round down to the nearest integer.
+            // Finally, we add the min value to shift the range up to the desired interval.
+			arr.push(Math.floor(Math.random() * 41) - 10);
+		}
+
+		// Find the arithmetic mean of the positive elements
+		let positiveSum = 0;
+		let positiveCount = 0;
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i] > 0) {
+				positiveSum += arr[i];
+				positiveCount++;
+			}
+		}
+
+		let arithmeticMean = positiveSum / positiveCount;
+
+		// Display the results on the webpage
+		let resultDiv = document.createElement('div');
+		resultDiv.innerHTML = `The randomly generated array is: [${arr.join(', ')}]<br>`;
+		resultDiv.innerHTML += `The arithmetic mean of the positive elements in the array is: ${arithmeticMean.toFixed(2)}`;
+
+		document.body.appendChild(resultDiv);
+	</script>
+</body>
+</html>

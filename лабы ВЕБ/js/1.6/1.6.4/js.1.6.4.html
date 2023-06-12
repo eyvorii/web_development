@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Name Display</title>
+</head>
+<body>
+  <h1>Welcome to my website!</h1>
+  
+  <form>
+    <label for="name-input">Enter your name:</label>
+    <input type="text" id="name-input">
+    <button type="button" onclick="displayUserName()">Submit</button>
+  </form>
+  
+  <div id="name-display"></div>
+  
+  <script>
+    class UserName {
+      constructor() {
+        this.name = null;
+      }
+      
+      setName(name) {
+        this.name = name;
+      }
+      
+      getName() {
+        return this.name;
+      }
+    }
+    
+    const userName = new UserName();
+    
+    function displayUserName() {
+      const nameInput = document.getElementById('name-input');
+      const nameDisplay = document.getElementById('name-display');
+      
+      userName.setName(nameInput.value);
+      nameDisplay.innerText = 'Hello, ' + userName.getName() + '!';
+    }
+  </script>
+</body>
+</html>
