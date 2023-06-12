@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script><!--
+        function Complete1()
+        {
+            if(document.Sel3.Pwd.value==document.Sel3.Pwd1.value)
+                alert("Вас зарегистрировали\nID="+document.Sel3.Id.value+"\nPassword="+document.Sel3.Pwd.value);
+            else
+                alert("Ошибка при вводе пароля\nПопробуйте еще раз");
+        }
+        //-->
+    </script>
+</head>
+<body>
+<H1>Регистрация</H1>
+<FORM NAME="Sel3">
+    <TABLE>
+        <TR><TD><B>Логин:<B></TD>
+            <TD><INPUT NAME="Id" SIZE=20
+                       onBlur="this.value=this.value.toUpperCase()"></TD></TR>
+        <TR><TD><B>Пароль:<B></TD>
+            <TD><INPUT TYPE="password" NAME="Pwd" SIZE=20
+                       onFocus="this.select();"></TD></TR>
+        <TR><TD><B>Проверка пароля:<B></TD>
+            <TD><INPUT TYPE="password" NAME="Pwd1" SIZE=20
+                       onFocus="this.select();"></TD></TR>
+    </TABLE>
+    <INPUT TYPE="button" VALUE="Готово" onClick="Complete1();">
+    <INPUT TYPE="reset" VALUE="Отмена">
+</FORM>
+</body>
+</html>
+
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Глобальные стили</title>
+  <style>
+   H1 { 
+    font-size: 200%; 
+    font-family: Courier New, Arial, Helvetica, sans-serif; 
+    text-align: center;
+    color: #7B68EE; 
+   }
+   body {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #E6E6FA;
+    padding: 0 20px 20px 20px;
+    border: 5px solid;
+    border-color: #FFFAF0;
+    text-align: center;
+    
+}
+   TABLE {
+    width: 500px;
+    color: #7B68EE; 
+    margin: 0 auto;
+    background-color: #FAEBD7;
+    padding: 0 10px 10px 10px;
+    border: 3px solid;
+    border-color: #FFFAF0;
+    
+}
+  
+  </style>
+ </head>
+</html>

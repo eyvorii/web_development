@@ -1,0 +1,100 @@
+<meta charset="utf-8">
+<script>
+
+// функция для получения случайного числа 
+function getRandomInt(min,max){
+  return Math.floor(Math.random()*(max-min+1))+min;    
+}
+
+// функция для получения случайной карты 
+function getCard(){
+  let cards = ['6','7','8','9','10','J','Q','K','A'];
+  return cards[getRandomInt(0,cards.length-1)];
+}
+
+
+// функция для подсчёта суммы карт на руках
+function getSum(hand){
+  let sum = 0;
+  for (let i=0;i<hand.length;i++){
+    let card = hand[i];
+    if(card!="A"){
+      if (card =="J" || card == "Q" || card == "K"){
+        sum = sum +10;
+      } else {
+        sum = sum + parseInt(card);
+      }
+    }
+  }
+
+  for( let i=0;i<hand.length;i++ ){
+    let card = hand[i];
+    if (card == "A"){
+      if (sum>21){
+        sum = sum + 1;
+      } else {
+        sum = sum +11;
+      }
+
+    }   
+
+  }   
+
+  return sum;
+}
+
+
+// функция для подсчёта текущего состояния очков дилера и игрока
+function getstatus(){
+  return 'Дилер: ' + dealer.join(' ') + ' ,Игрок: ' + player.join(' ') + '\n';
+}
+
+
+// начальный набор карт дилера и игрока
+let dealer = [getCard()];
+let player = [getCard(),getCard()];
+
+// играем
+do {
+  answer = prompt(getstatus() + 'Хотите еще карту? 1 - да, иначе - нет');
+
+if(answer == '1'){
+  player.push(getCard());
+
+
+if(getSum(player)>21){
+ alert('Перебор. ' + getstatus());
+ break;
+}
+
+else if (getSum(player)==21){
+
+  alert('Black Jack! ');
+  break;
+}
+} else{
+  while(getSum(dealer)<17){
+    dealer.push(getCard());
+  }
+
+  if (getSum(dealer)>21){
+    alert('Перебор ' + getstatus());
+  } else if(getSum(dealer)==21){
+    alert('Black Jack ' + getstatus());
+  } else if (getSum(player)==getSum(dealer)){
+    alert('Ничья ' + getstatus());
+  } else if (getSum(dealer)>getSum(player)){
+    alert('Выигрыш ' + getstatus());
+  } else{
+    alert('Проигрыш ' + getstatus());
+  }
+}
+alert(getstatus());
+
+}while(answer==1);
+
+
+alert('Дилер: ' + dealer.join(' ') + ' ,Игрок: ' + player.join(' '));
+alert('Текущая сумма карт у игрока: ' + getSum(player));
+
+</script>
