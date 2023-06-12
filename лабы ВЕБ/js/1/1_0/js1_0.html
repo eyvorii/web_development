@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello, World</title>
+</head>
+<body>
+  <div id="message"></div>
+
+  <script>
+    var messageElement = document.getElementById("message");
+    messageElement.textContent = "Hello, World";
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Число</title>
+</head>
+<body>
+  <label for="numberInput">Введите число:</label>
+  <input type="number" id="numberInput">
+  <button onclick="saveNumber()">Сохранить</button>
+
+  <script>
+    function saveNumber() {
+      var inputElement = document.getElementById("numberInput");
+      var a = inputElement.value;
+      alert("Вы ввели число: " + a);
+    }
+  </script>
+</body>
+</html>
