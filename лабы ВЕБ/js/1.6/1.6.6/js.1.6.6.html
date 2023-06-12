@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flip Your Name</title>
+</head>
+<body>
+    <h1>Flip Your Name</h1>
+
+    <form>
+        <label for="name-input">Enter your name:</label>
+        <input type="text" id="name-input">
+        <button type="button" onclick="flipName()">Flip It!</button>
+    </form>
+
+    <div id="flipped-name-display"></div>
+
+    <script>
+        class FlippedName {
+            constructor(name) {
+                this.name = name;
+            }
+
+            flip() {
+                let flippedName = '';
+                for (let i = this.name.length - 1; i >= 0; i--) {
+                    flippedName += this.name[i];
+                }
+                return flippedName;
+            }
+        }
+
+        function flipName() {
+            const nameInput = document.getElementById('name-input').value;
+            const flippedNameDisplay = document.getElementById('flipped-name-display');
+            const flippedName = new FlippedName(nameInput).flip();
+            flippedNameDisplay.innerText = `Your flipped name is: ${flippedName}`;
+        }
+    </script>
+</body>
+</html>
